@@ -36,16 +36,12 @@ if ! command -v ffmpeg &> /dev/null; then
 fi
 
 # 检查 SSL 证书（python.org 安装的 Python 需要手动装证书）
-if ! python3 -c "import ssl; ssl.create_default_context()" &> /dev/null; then
-    PY_VER=$(python3 -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
-    CERT_CMD="/Applications/Python ${PY_VER}/Install Certificates.command"
-    if [ -f "$CERT_CMD" ]; then
-        echo "🔐 Installing SSL certificates for Python ${PY_VER}..."
-        "$CERT_CMD"
-    else
-        echo "⚠️  SSL certificate verification may fail (model downloads)."
-        echo "   Try running: pip install --upgrade certifi"
-    fi
+PY_VER=$(python3 -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
+CERT_CMD="/Applications/Python ${PY_VER}/Install Certificates.command"
+SSL_DIR="/Library/Frameworks/Python.framework/Versions/${PY_VER}/etc/openssl"
+if [ -f "$CERT_CMD" ] && [ ! -f "$SSL_DIR/cert.pem" ]; then
+    echo "🔐 Installing SSL certificates for Python ${PY_VER}..."
+    "$CERT_CMD"
 fi
 
 # 没有 venv 就自动创建 + 装依赖
