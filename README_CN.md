@@ -52,9 +52,13 @@ brew --version
 
 ### 2. 安装 Python
 
-```bash
-brew install python
-```
+从 Python 官网下载安装包（推荐 3.13）：
+
+👉 **https://www.python.org/downloads/**
+
+下载后双击 `.pkg` 文件，按提示完成安装即可。
+
+> ⚠️ **不建议用 `brew install python`**，brew 版本不自带 tkinter，会导致程序无法启动。
 
 验证：
 
@@ -62,12 +66,6 @@ brew install python
 python3 --version
 pip3 --version
 ```
-
-> 如果提示 `command not found`，运行以下命令刷新 PATH 后重试：
-> ```bash
-> eval "$(/opt/homebrew/bin/brew shellenv)"
-> ```
-> 还是不行的话，回到第 1 步确认那两条 PATH 配置命令是否执行过。
 
 ### 3. 安装 ffmpeg
 
@@ -98,9 +96,12 @@ git --version
 ### 5. 下载项目
 
 ```bash
+cd ~/Desktop
 git clone https://github.com/InGerm666/pureWhisper
 cd pureWhisper
 ```
+
+> 这会把项目下载到桌面。安装完成后你可以把 `pureWhisper` 文件夹移到任意位置。
 
 或者直接在 GitHub 页面点 **Code → Download ZIP**，解压后在终端进入该文件夹。
 
@@ -129,10 +130,12 @@ pip install -r requirements.txt
 或者在终端手动运行：
 
 ```bash
-cd pureWhisper
+cd 你的路径/pureWhisper
 source venv/bin/activate
 python3 whisper_app.py
 ```
+
+> 💡 **小技巧**：输入 `cd `（注意后面有空格），然后把 `pureWhisper` 文件夹直接拖进终端窗口，路径会自动填入。
 
 ---
 

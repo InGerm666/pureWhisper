@@ -3,8 +3,22 @@ cd "$(dirname "$0")"
 
 # 检查 python3 是否可用
 if ! command -v python3 &> /dev/null; then
-    echo "❌ python3 not found. Please install Python first:"
-    echo "   brew install python"
+    echo "❌ python3 not found. Please install Python from:"
+    echo "   https://www.python.org/downloads/"
+    echo ""
+    echo "Press any key to close..."
+    read -n 1
+    exit 1
+fi
+
+# 检查 tkinter 是否可用（brew Python 不自带）
+if ! python3 -c "import tkinter" &> /dev/null; then
+    echo "❌ tkinter not found. Your Python is missing tkinter (common with brew Python)."
+    echo ""
+    echo "   Please install the official Python from:"
+    echo "   https://www.python.org/downloads/"
+    echo ""
+    echo "   Then delete the venv folder and re-run this script."
     echo ""
     echo "Press any key to close..."
     read -n 1

@@ -52,9 +52,13 @@ You should see version output like `Homebrew 4.x.x`.
 
 ### 2. Install Python
 
-```bash
-brew install python
-```
+Download the installer from the official Python website (3.13 recommended):
+
+👉 **https://www.python.org/downloads/**
+
+Double-click the `.pkg` file and follow the prompts to install.
+
+> ⚠️ **Do not use `brew install python`** — the Homebrew version doesn't include tkinter, which will prevent the app from launching.
 
 Verify:
 
@@ -62,12 +66,6 @@ Verify:
 python3 --version
 pip3 --version
 ```
-
-> If you see `command not found`, run the following to refresh your PATH, then try again:
-> ```bash
-> eval "$(/opt/homebrew/bin/brew shellenv)"
-> ```
-> If it still doesn't work, go back to Step 1 and make sure you ran the two PATH setup commands.
 
 ### 3. Install ffmpeg
 
@@ -98,9 +96,12 @@ git --version
 ### 5. Clone the project
 
 ```bash
+cd ~/Desktop
 git clone https://github.com/InGerm666/pureWhisper
 cd pureWhisper
 ```
+
+> This downloads the project to your Desktop. You can move the `pureWhisper` folder anywhere after setup.
 
 Or click **Code → Download ZIP** on the GitHub page and extract it.
 
@@ -129,10 +130,12 @@ pip install -r requirements.txt
 Or run manually in Terminal:
 
 ```bash
-cd pureWhisper
+cd /path/to/pureWhisper
 source venv/bin/activate
 python3 whisper_app.py
 ```
+
+> 💡 **Tip**: Type `cd ` (with a trailing space), then drag the `pureWhisper` folder into the Terminal window — the path will be filled in automatically.
 
 ---
 

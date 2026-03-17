@@ -107,7 +107,11 @@ if HAS_DND:
     class BaseTk(ctk.CTk, TkinterDnD.DnDWrapper):
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
-            self.TkdndVersion = TkinterDnD._require(self)
+            try:
+                self.TkdndVersion = TkinterDnD._require(self)
+            except Exception:
+                global HAS_DND
+                HAS_DND = False
 else:
     BaseTk = ctk.CTk
 
