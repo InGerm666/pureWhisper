@@ -63,6 +63,12 @@ python3 --version
 pip3 --version
 ```
 
+> If you see `command not found`, run the following to refresh your PATH, then try again:
+> ```bash
+> eval "$(/opt/homebrew/bin/brew shellenv)"
+> ```
+> If it still doesn't work, go back to Step 1 and make sure you ran the two PATH setup commands.
+
 ### 3. Install ffmpeg
 
 ```bash
@@ -100,28 +106,31 @@ Or click **Code → Download ZIP** on the GitHub page and extract it.
 
 ### 6. Install Python dependencies
 
-The project root contains `requirements.txt`. Install everything with one command:
+The project root contains `requirements.txt`. Use a virtual environment to install dependencies (this avoids system-level conflicts on macOS):
 
 ```bash
-pip3 install -r requirements.txt
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 ```
+
+> `venv` creates an isolated Python environment inside the project folder. This is the recommended way to install packages on modern macOS.
 
 > First-time installation of `openai-whisper` will also download PyTorch (~2 GB). Please be patient.
 
-> If you encounter an `"externally-managed-environment"` error, use a virtual environment:
 > If you run into any errors, feel free to contact the author — happy to help you troubleshoot step by step.
->
-> ```bash
-> python3 -m venv venv
-> source venv/bin/activate
-> pip install -r requirements.txt
-> ```
 
 ---
 
 ## Run
 
+**Easiest way — double-click `start.command`** in the project folder. It automatically sets up the environment and launches the app.
+
+Or run manually in Terminal:
+
 ```bash
+cd pureWhisper
+source venv/bin/activate
 python3 whisper_app.py
 ```
 
