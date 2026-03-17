@@ -399,6 +399,7 @@ class WhisperApp(BaseTk):
             messagebox.showwarning("Unsupported", f"Not a supported audio format: {ext}")
             return
         self._file_path.set(path)
+        self._export_dir.set(os.path.dirname(path))
         self._drop_lbl.configure(text=os.path.basename(path), text_color=WHITE)
         self._drop_icon.configure(text="✓", text_color=GREEN)
         self._drop.configure(border_color=GREEN)
@@ -409,6 +410,7 @@ class WhisperApp(BaseTk):
         path = filedialog.askopenfilename(initialdir=os.path.expanduser("~/Desktop"), filetypes=filetypes)
         if path:
             self._file_path.set(path)
+            self._export_dir.set(os.path.dirname(path))
             self._drop_lbl.configure(text=os.path.basename(path), text_color=WHITE)
             self._drop_icon.configure(text="✓", text_color=GREEN)
             self._drop.configure(border_color=GREEN)
@@ -438,6 +440,7 @@ class WhisperApp(BaseTk):
         path = getattr(self, "_scan_paths", {}).get(choice, "")
         if path:
             self._file_path.set(path)
+            self._export_dir.set(os.path.dirname(path))
             self._drop_lbl.configure(text=choice, text_color=WHITE)
             self._update_preview()
 
