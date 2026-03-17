@@ -130,6 +130,10 @@ class WhisperApp(BaseTk):
         self._run_id = 0
         self._msg_queue = queue.Queue()
         self._build_ui()
+        # Force initial render on macOS Sequoia (Tcl/Tk drawing bug)
+        self.withdraw()
+        self.update()
+        self.deiconify()
 
     def _resize_window(self, w, h, center=False):
         self.update_idletasks()
