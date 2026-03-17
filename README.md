@@ -59,6 +59,8 @@ Download the installer from the official Python website (3.13 recommended):
 Double-click the `.pkg` file and follow the prompts to install.
 
 > ⚠️ **Do not use `brew install python`** — the Homebrew version doesn't include tkinter, which will prevent the app from launching.
+>
+> ⚠️ **Note**: Installing Python will add it to your applications list. If you'd rather not install Python, you can wait for a future update (a standalone version is planned). For now, this tool is developer-oriented and requires a local Python environment.
 
 Verify:
 
